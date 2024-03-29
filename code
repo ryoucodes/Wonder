@@ -60,6 +60,8 @@ Full credits: https://sheathemes.tumblr.com/credits
 <meta name="color:permalink like" content="#df2b2b" />
 <meta name="color:permalink reblog" content="#38bb27" />
 
+<meta name="color:&#x2762;&#x25E5; &#x25AC; DARK MODE &#x25AC; &#x25E4;&#x2762;">
+
 <meta name="color:Dark mode Accent" content="#c0bcdc"/>
 <meta name="color:Dark mode Accent Text" content="#000000"/>
 <meta name="color:Dark mode Text" content="#eeedf2"/>
@@ -147,7 +149,6 @@ Full credits: https://sheathemes.tumblr.com/credits
     --gap3: 2.5rem;
     --gap4: 3.5rem;
     
-    --Post-Columns: 2;
     --gap-top-bottom: 12rem; 
     --gap-post-margin: 10rem;
     --text-margin: 1.8rem; 
@@ -203,7 +204,7 @@ html.theme-transition *:after {
 }
 {/block:ifdarkmode}
 
-/* -------------------------------------  css resets (Joshua Comeau) */
+/* -------------------------------------  css resets */
 
 *,*::before,*::after {
     -webkit-font-smoothing: antialiased;
@@ -258,11 +259,11 @@ p,h1,h2,h3,h4,h5,h6 {
 
 ::-moz-selection {
     background-color: rgb(var(--color-accent));
-    color:rgb(var(--color-text));
+    color:rgb(var(--color-accent-text));
 }
 ::selection {
     background-color: rgb(var(--color-accent));
-    color:rgb(var(--color-text)); 
+    color:rgb(var(--color-accent-text)); 
 }
 
 /* ------------------------------------- scrollbar (not firefrox) */
@@ -394,7 +395,6 @@ a:hover {
     min-height: 100dvh;
     justify-content: space-between;
 }
-
 main {
     display: grid;
     gap: 5rem;
@@ -436,6 +436,7 @@ footer.footer-bottom {
     text-transform: lowercase;
     font-size: 1.2rem;
 }
+
 /* -------------------------------------  sidebar */
 
 aside {
@@ -580,10 +581,14 @@ aside {
 input::placeholder {
     color: rgba(var(--color-text), 0.5);
 }
+input:focus::placeholder {
+    color: transparent;
+}
 .search-open {
     opacity: 1;
     visibility: visible;
 }
+
 /* -------------------------------------  navigation */
 
 .navigation-more {
@@ -650,13 +655,11 @@ nav.pagi a.has_page:hover {
     border-radius: var(--round1);
 }
 
+/* -------------------------------------  posts */
 section.content {
     grid-area: post;
     width: var(--post-width);
 }
-
-/* -------------------------------------  posts */
-
 article, .permalink-container, .notes-container {
     width: 100%;
     {block:ifpostouterborder}
@@ -679,11 +682,10 @@ article ul li::marker, article ol li::marker {
     color: rgb(var(--color-accent));
 }
 
-/* the post container - only the post content */
 .post-content {
 }
 
-:is(article h1, article h2, article h3, article p, article ul, article ol, article blockquote, .notes-container blockqupte, article .question, ol.notes, .sb-about p, .updates-container, .little-sidebar) {
+:is(article h1, article h2, article h3, article p, article ul, article ol, article blockquote, .notes-container blockqupte, article .question, ol.notes, .sb-about p) {
     line-height: var(--line-height); 
 }
 
@@ -739,7 +741,6 @@ article h3 {
 .reblog-header {
     margin: var(--text-margin);
 }
-/*  user reblogs  */
 .reblog-header:is(:not(.original)) {
     margin: 0 0 var(--gap2) 0;
     padding: var(--text-margin) var(--text-margin) 0 var(--text-margin);
@@ -769,7 +770,7 @@ p:empty {
 	display: none;
 }
 
-/* -------------------------------------  npf photoset stuff. */
+/* -------------------------------------  npf photosets */
 
 figure.tmblr-full:is(:not(:last-of-type)) {
     margin-bottom: var(--gutter);
@@ -947,6 +948,7 @@ a.custom-like-container .liked + .custom-like-icon {
 .notes {
     justify-content: flex-end;
 }
+
 /* -------------------------------------  tags */
 
 .toggle-tags {
@@ -1009,7 +1011,6 @@ a.custom-like-container .liked + .custom-like-icon {
     padding: var(--text-margin);
 }
 .permalink-container {
-    {block:Pages}display: none;{/block:Pages}
     {block:AskPage}display: none;{/block:AskPage}
 }
 .notes-container {
@@ -1669,11 +1670,11 @@ button.scroll-to-top.visible {
         </div>
     {/block:IndexPage}
         
-                    {block:ContentSource}
+    {block:ContentSource}
         <!-- {SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}"
 width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />
 {/block:SourceLogo}{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
-{/block:ContentSource}
+    {/block:ContentSource}
         <!-- {block:NoRebloggedFrom}{block:RebloggedFrom}{ReblogParentName}{/block:RebloggedFrom}
 {/block:NoRebloggedFrom} -->
     
